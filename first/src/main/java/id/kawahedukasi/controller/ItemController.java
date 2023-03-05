@@ -49,8 +49,8 @@ public class ItemController {
     @PUT
     @Path("/{id}")
     @Transactional
-    public Response put(@PathParam("id") Long itemId, Map<String, Object> request) {
-        Item item = Item.findById(itemId);
+    public Response put(@PathParam("id") Long id, Map<String, Object> request) {
+        Item item = Item.findById(id);
         if (item == null) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
@@ -69,8 +69,8 @@ public class ItemController {
     @DELETE
     @Path("/{id}")
     @Transactional
-    public Response delete(@PathParam("id") Long itemId){
-        Item item = Item.findById(itemId);
+    public Response delete(@PathParam("id") Long id){
+        Item item = Item.findById(id);
         if (item == null) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
