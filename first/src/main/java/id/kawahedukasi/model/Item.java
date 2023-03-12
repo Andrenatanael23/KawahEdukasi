@@ -1,6 +1,7 @@
-package id.kawahedukasi.model;
+package kawahedukasi.batchiv.model;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import org.apache.poi.ss.usermodel.Cell;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -8,34 +9,35 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "items")
+@Table(name = "item")
 public class Item extends PanacheEntityBase {
     @Id
-    @SequenceGenerator(name = "itemSequence", sequenceName = "item_sequence", allocationSize = 1, initialValue = 1)
+    @SequenceGenerator(name = "itemSequence",sequenceName = "item_sequence",allocationSize = 1, initialValue = 1)
     @GeneratedValue(generator = "itemSequence", strategy = GenerationType.SEQUENCE)
-    @Column(name = "id", nullable = false)
-    public long id;
+    @Column(name = "item_id" , nullable = false)
+    public Long itemId;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     public String name;
 
-    @Column(name = "count" , nullable = false)
+    @Column(name = "count")
     public Integer count;
 
-    @Column(name = "price" , nullable = false)
+    @Column(name = "price")
     public Double price;
 
-    @Column(name = "type" , nullable = false)
+    @Column(name = "type")
     public String type;
 
-    @Column(name = "description" , nullable = false)
+    @Column(name = "description")
     public String description;
 
     @CreationTimestamp
-    @Column(name = "createdAt" , nullable = false)
+    @Column(name = "created_at")
     public LocalDateTime createdAt;
 
     @UpdateTimestamp
-    @Column(name = "updatedAt" , nullable = false)
+    @Column(name = "updated_at")
     public LocalDateTime updatedAt;
+
 }
